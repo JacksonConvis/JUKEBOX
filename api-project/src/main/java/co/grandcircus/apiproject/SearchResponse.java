@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SearchResponse {
 
+    SearchResponse response  = request.getFo;
 
     @JsonProperty("data")
     private List<SearchResult> searchResults;
