@@ -3,11 +3,19 @@ package co.grandcircus.apiproject;
 import org.springframework.data.annotation.Id;
 
 public class Album {
-    @Id
     private String id;
     private String title;
     private String cover;
     private String tracklist;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getId() {
         return id;

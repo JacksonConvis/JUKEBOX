@@ -2,19 +2,37 @@ package co.grandcircus.apiproject;
 
 import java.util.List;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Document("Favorites")
 public class SearchResult {
     @Id
-    private String id;
+    @JsonProperty("id")
+    private String deezerId;
     private String title;
-    @JsonProperty("link")
-    private String trackLink;
+    private String link;
     private int duration;
     private String preview;
-    private List<Artist> artist;
-    private List<Album> album;
+    private Artist artist;
+    private Album album;
     private String type;
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getId() {
         return id;
@@ -32,21 +50,6 @@ public class SearchResult {
         this.title = title;
     }
 
-    public String getTrackLink() {
-        return trackLink;
-    }
-
-    public void setTrackLink(String trackLink) {
-        this.trackLink = trackLink;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
 
     public String getPreview() {
         return preview;
@@ -56,19 +59,19 @@ public class SearchResult {
         this.preview = preview;
     }
 
-    public List<Artist> getArtist() {
+    public Artist getArtist() {
         return artist;
     }
 
-    public void setArtist(List<Artist> artist) {
+    public void setArtist(Artist artist) {
         this.artist = artist;
     }
 
-    public List<Album> getAlbum() {
+    public Album getAlbum() {
         return album;
     }
 
-    public void setAlbum(List<Album> album) {
+    public void setAlbum(Album album) {
         this.album = album;
     }
 

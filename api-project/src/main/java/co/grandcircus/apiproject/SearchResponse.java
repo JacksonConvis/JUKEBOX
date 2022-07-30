@@ -5,28 +5,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SearchResponse {
 
-    SearchResponse response  = request.getFo;
 
-    @JsonProperty("data")
-    private List<SearchResult> searchResults;
-    @JsonProperty("results")
-    private String searchTotal;
+    private List<SearchResult> data;
+    private String total;
     private String next;
 
-    public List<SearchResult> getSearchResults() {
-        return searchResults;
+    public List<SearchResult> getData() {
+        return data;
     }
 
-    public void setSearchResults(List<SearchResult> searchResults) {
-        this.searchResults = searchResults;
+    public void setData(List<SearchResult> data) {
+        this.data = data;
     }
 
-    public String getSearchTotal() {
-        return searchTotal;
+    public String getTotal() {
+        return total;
     }
 
-    public void setSearchTotal(String searchTotal) {
-        this.searchTotal = searchTotal;
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     public String getNext() {
