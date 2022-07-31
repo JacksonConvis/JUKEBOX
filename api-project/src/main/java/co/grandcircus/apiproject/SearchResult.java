@@ -2,13 +2,11 @@ package co.grandcircus.apiproject;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document("Favorites")
 public class SearchResult {
     @Id
-    @JsonProperty("id")
-    private String deezerId;
+    private String id;
     private String title;
     private String link;
     private int duration;
@@ -34,11 +32,11 @@ public class SearchResult {
     }
 
     public String getId() {
-        return deezerId;
+        return id;
     }
 
     public void setId(String id) {
-        this.deezerId = id;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -79,6 +77,20 @@ public class SearchResult {
     }
 
     public void setType(String type) {
+        this.type = type;
+    }
+
+    public SearchResult() {}
+
+    public SearchResult(String id, String title, String link, int duration, String preview,
+            Artist artist, Album album, String type) {
+        this.id = id;
+        this.title = title;
+        this.link = link;
+        this.duration = duration;
+        this.preview = preview;
+        this.artist = artist;
+        this.album = album;
         this.type = type;
     }
 

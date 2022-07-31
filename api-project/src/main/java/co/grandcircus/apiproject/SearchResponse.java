@@ -5,7 +5,6 @@ import java.util.List;
 
 public class SearchResponse {
 
-
     private List<SearchResult> data;
     private String total;
     private String next;
@@ -32,6 +31,19 @@ public class SearchResponse {
 
     public void setNext(String next) {
         this.next = next;
+    }
+
+    public SearchResponse() {}
+
+    public SearchResponse(List<SearchResult> data, String total, String next) {
+        this.data = data;
+        this.total = total;
+        this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchResponse [data=" + data + ", next=" + next + ", total=" + total + "]";
     }
 
 }
