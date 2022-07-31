@@ -1,7 +1,6 @@
 package co.grandcircus.apiproject;
 
-import org.springframework.data.annotation.Id;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class Artist {
     private String id;

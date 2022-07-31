@@ -1,6 +1,5 @@
 package co.grandcircus.apiproject;
 
-import org.springframework.data.annotation.Id;
 
 public class Album {
     private String id;
