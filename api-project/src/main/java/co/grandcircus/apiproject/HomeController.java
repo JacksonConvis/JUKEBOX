@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-	// private FavoriteRepository repo;
+	@Autowired
+	private FavoriteRepository repo;
 	@Autowired
 	private SearchService searchService;
 
