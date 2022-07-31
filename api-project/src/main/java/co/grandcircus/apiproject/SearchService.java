@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class SearchService {
+public class SearchService
+ {
     private RestTemplate request = new RestTemplate();
 
     public SearchResponse SearchRes(String searchTerm) {
