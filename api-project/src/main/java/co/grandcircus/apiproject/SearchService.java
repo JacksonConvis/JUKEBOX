@@ -23,10 +23,10 @@ public class SearchService {
         HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
         ResponseEntity<SearchResponse> response = request.exchange(url, HttpMethod.GET,
                 requestEntity, SearchResponse.class, searchTerm);
-        System.out.println(response.getBody().getTotal());
-        // // System.out.println(response.getBody().getData());
-        System.out.println(response.getBody().getNext());
-        // System.out.println(response.getBody().getClass());
+        // System.out.println(response.getBody().getTotal());
+        // // // System.out.println(response.getBody().getData());
+        // System.out.println(response.getBody().getNext());
+        // // System.out.println(response.getBody().getClass());
         return response.getBody();
         // return response;
     }

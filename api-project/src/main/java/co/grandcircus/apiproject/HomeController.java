@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-	// @Autowired
 	// private FavoriteRepository repo;
 	@Autowired
 	private SearchService searchService;
@@ -28,10 +27,10 @@ public class HomeController {
 		return "searchresults";
 	}
 
-	// @PostMapping(value = "/addfavorite")
-	// public String addFavortie(@RequestParam SearchResult searchResult, Model model) {
-	// return "searchresult";
-	// }
+	// @PostMapping("/addfavorite")
+	// // public String addFavortie(@RequestParam SearchResult searchResult, Model model) {
+	// // return "searchresult";
+	// // }
 
 
 }
