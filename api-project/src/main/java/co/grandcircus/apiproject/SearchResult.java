@@ -3,10 +3,10 @@ package co.grandcircus.apiproject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("Favorites")
+@Document("favorites")
 public class SearchResult {
     @Id
-    private String id;
+    private String _id;
     private String title;
     private String link;
     private int duration;
@@ -31,12 +31,12 @@ public class SearchResult {
         this.link = link;
     }
 
-    public String getId() {
-        return id;
+    public String get_Id() {
+        return _id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void set_Id(String _id) {
+        this._id = _id;
     }
 
     public String getTitle() {
@@ -82,9 +82,9 @@ public class SearchResult {
 
     public SearchResult() {}
 
-    public SearchResult(String id, String title, String link, int duration, String preview,
+    public SearchResult(String _id, String title, String link, int duration, String preview,
             Artist artist, Album album, String type) {
-        this.id = id;
+        this._id = _id;
         this.title = title;
         this.link = link;
         this.duration = duration;

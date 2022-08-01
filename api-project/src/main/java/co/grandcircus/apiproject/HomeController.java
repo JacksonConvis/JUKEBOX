@@ -28,10 +28,22 @@ public class HomeController {
 		return "searchresults";
 	}
 
-	// @PostMapping("/addfavorite")
-	// // public String addFavortie(@RequestParam SearchResult searchResult, Model model) {
-	// // return "searchresult";
-	// // }
+	 @PostMapping("/addfavorite")
+	  public String addFavortie(@RequestParam String _id,
+	  @RequestParam String title,
+	  @RequestParam String link,
+	  @RequestParam int duration,
+	  @RequestParam String preview,
+	  @RequestParam Artist artist,
+	  @RequestParam Album album,
+	  @RequestParam String type, Model model) {
+		 
+		 SearchResult newFav = new SearchResult(_id, title, link, duration, preview, artist, album, type);
+		 
+		 repo.save(newFav);
+		 
+	  return "redirect:/searchresult";
+	  }
 
 
 }
