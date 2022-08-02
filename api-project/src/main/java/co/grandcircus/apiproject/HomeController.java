@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,14 +25,36 @@ public class HomeController {
 
 	@PostMapping("/searchresults")
 	public String showResults(@RequestParam String searchTerm, Model model) {
-		model.addAttribute("songs", searchService.SearchQuery(searchTerm));
+		List<SearchResult> songResults = searchService.SearchQuery(searchTerm).getData();
+		model.addAttribute("songs", songResults);
 		return "searchresults";
 	}
 
-	// @PostMapping("/addfavorite")
-	// // public String addFavortie(@RequestParam SearchResult searchResult, Model model) {
-	// // return "searchresult";
-	// // }
 
+
+	@PostMapping("/favorite")
+	public String addFavortie(@RequestParam String id, @RequestParam String title,
+			@RequestParam int duration, @RequestParam String preview,
+			@RequestParam String albumTitle, @RequestParam String cover, @RequestParam String name,
+			Model model) {
+		Album addAlbum = new Album(albumTitle, cover);
+		Artist addArtist = new Artist(name);
+		SearchResult addSearchResult =
+				new SearchResult(id, title, duration, preview, addArtist, addAlbum);
+		repo.save(addSearchResult);
+		model.addAttribute("song", addSearchResult);
+		return "success";
+	}
+
+	@RequestMapping("/success")
+	public String showSuccess(Model model) {
+		return "success";
+	}
+
+	// favorites controller not complete
+	@RequestMapping("/favorites")
+	public String showFavorites(Model model) {
+		return "favorites";
+	}
 
 }

@@ -2,8 +2,6 @@
 package co.grandcircus.apiproject;
 
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -31,19 +29,3 @@ public class SearchService {
 
     }
 }
-
-
-// @Service
-// public class SearchService {
-// private RestTemplate request = new RestTemplate();
-
-// public SearchResponse SearchQuery(String searchTerm) {
-// String url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + searchTerm;
-// System.out.println(url);
-// SearchResponse response = request.getForObject(url, SearchResponse.class);
-// System.out.println(response.getNext());
-// return response;
-
-// }
-
-// }
