@@ -8,28 +8,28 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <title>Results</title>
   </head>
   <body>
+        <c:forEach var="song" items="${songs.data}">
+        <form action="/addfavorite" method="post">
     <table>
       <tbody>
-        <c:forEach var="song" items="${songs.data}">
-  <form action="/addfavorite" method="post">
         <tr>
           <td><img src="${song.album.cover}"></td>
           <td>
           ${song.artist.name}<br>
           ${song.title}<br>
           <audio controls>
-  		<source src="${song.preview}"/></audio><br>
+  <source src="
+          ${song.preview}"/></audio><br>
           ${song.duration}<br>
           ${song.album.title}
           </td>
-          <td>
-    		<input type="submit" name="add" value="Add to Favorites" />
-			
+          <td><button type="submit">Add to Favorites</button>
 			</td>
         </tr>
-    </form>
-      </c:forEach>
       </tbody>
     </table>
+        </form>
+      </c:forEach>
+    <p>HELP</p>
   </body>
 </html>
