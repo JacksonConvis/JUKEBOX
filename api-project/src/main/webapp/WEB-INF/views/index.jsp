@@ -19,8 +19,8 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
       <input type="submit" />
     </form>
     <br />
-    <button onclick="location.href='/favorites'" type="button">
-      Your favorites
+    <button onclick="location.href='/showfavorites'" type="button">
+      Your Favorites
     </button>
   </body>
 </html>

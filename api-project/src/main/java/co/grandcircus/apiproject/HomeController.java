@@ -23,6 +23,8 @@ public class HomeController {
 		return "index";
 	}
 
+
+
 	@PostMapping("/searchresults")
 	public String showResults(@RequestParam String searchTerm, Model model) {
 		List<SearchResult> songResults = searchService.SearchQuery(searchTerm).getData();
@@ -31,7 +33,7 @@ public class HomeController {
 	}
 
 
-	@PostMapping("/favorite")
+	@PostMapping("/addfavorite")
 	public String addFavortie(@RequestParam String id, @RequestParam String title,
 			@RequestParam int duration, @RequestParam String preview,
 			@RequestParam String albumTitle, @RequestParam String cover, @RequestParam String name,
@@ -51,16 +53,19 @@ public class HomeController {
 	}
 
 	// favorites controller not complete
-	@RequestMapping("/favorites")
+	@RequestMapping("/showfavorites")
 	public String listFaves(Model model) {
 		List<SearchResult> listF = repo.findAll();
 		model.addAttribute("favorites", listF);
-		return "displayfavorites";
+		return "favorites";
 	}
+
 	@PostMapping("/remove")
-	public String removeFavorite(@RequestParam String id, Model model){
+	public String removeFavorite(@RequestParam String id, Model model) {
 		repo.deleteById(id);
-	return "redirect:/favorites";
+		List<SearchResult> listF = repo.findAll();
+		model.addAttribute("favorites", listF);
+		return "redirect:/showfavorites";
 	}
-	
+
 }

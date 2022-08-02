@@ -9,12 +9,12 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
   </head>
   <body>
     <h1>Your Search Results</h1>
-    <button onclick="location.href='/favorites'" type="button">Show My Favorites</button>
+    <button onclick="location.href='/showfavorites'" type="button">Show My Favorites</button>
     <button onclick="location.href='/'" type="button">Back to Search</button>
     <table>
       <tbody>
         <c:forEach var="song" items="${songs}">
-          <form action="/favorite" method="post">
+          <form action="/addfavorite" method="post">
           <tr>
           <input type="hidden"  name="id" value="${song.id}">
           <input type="hidden"  name="cover" value="${song.album.cover}">
