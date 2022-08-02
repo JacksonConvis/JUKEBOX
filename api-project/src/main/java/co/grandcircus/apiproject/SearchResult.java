@@ -18,7 +18,7 @@ public class SearchResult {
         return id;
     }
 
-    public void setId(String id) {
+    public void set_Id(String id) {
         this.id = id;
     }
 
@@ -63,7 +63,6 @@ public class SearchResult {
     }
 
     public SearchResult() {}
-
     public SearchResult(String id, String title, int duration, String preview, Artist artist,
             Album album) {
         this.id = id;
