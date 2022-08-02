@@ -8,28 +8,36 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <title>Results</title>
   </head>
   <body>
-        <c:forEach var="song" items="${songs.data}">
-        <form action="/addfavorite" method="post">
+    <h1>Your Search Results</h1>
+    <button onclick="location.href='/favorites'" type="button">Show My Favorites</button>
+    <button onclick="location.href='/'" type="button">Back to Search</button>
     <table>
       <tbody>
-        <tr>
+        <c:forEach var="song" items="${songs}">
+          <form action="/favorite" method="post">
+          <tr>
+          <input type="hidden"  name="id" value="${song.id}">
+          <input type="hidden"  name="cover" value="${song.album.cover}">
           <td><img src="${song.album.cover}"></td>
-          <td>
-          ${song.artist.name}<br>
-          ${song.title}<br>
+          <td> 
+          <input type="hidden"  name="name" value="${song.artist.name}">
+          <c:out value = "${song.artist.name}"/> <br>
+          <input type="hidden"  name="title" value="${song.title}">
+          <c:out value = "${song.title}"/><br>
+          <input type="hidden"  name="duration" value="${song.duration}">
+          <c:out value = "${song.duration}"/> sec<br>
+          <input type="hidden"  name="albumTitle" value="${song.album.title}">
+          <c:out value = "${song.album.title}"/><br>
           <audio controls>
-  <source src="
-          ${song.preview}"/></audio><br>
-          ${song.duration}<br>
-          ${song.album.title}
+            <input type="hidden"  name="preview" value="${song.preview}">
+            <source src="${song.preview}" />
+          </audio>
+          <input type="submit" value="Add to Favorites"><br><br>
           </td>
-          <td><button type="submit">Add to Favorites</button>
-			</td>
-        </tr>
+          </tr>
+        </form>
+        </c:forEach>
       </tbody>
     </table>
-        </form>
-      </c:forEach>
-    <p>HELP</p>
   </body>
 </html>

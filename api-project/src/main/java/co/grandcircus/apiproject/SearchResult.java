@@ -6,37 +6,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("favorites")
 public class SearchResult {
     @Id
-    private String _id;
+    private String id;
     private String title;
-    private String link;
+    // private String link;
     private int duration;
     private String preview;
     private Artist artist;
     private Album album;
-    private String type;
 
-    public int getDuration() {
-        return duration;
+    public String getId() {
+        return id;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String get_Id() {
-        return _id;
-    }
-
-    public void set_Id(String _id) {
-        this._id = _id;
+    public void set_Id(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -47,6 +30,13 @@ public class SearchResult {
         this.title = title;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
     public String getPreview() {
         return preview;
@@ -72,26 +62,15 @@ public class SearchResult {
         this.album = album;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public SearchResult() {}
-
-    public SearchResult(String _id, String title, String link, int duration, String preview,
-            Artist artist, Album album, String type) {
-        this._id = _id;
+    public SearchResult(String id, String title, int duration, String preview, Artist artist,
+            Album album) {
+        this.id = id;
         this.title = title;
-        this.link = link;
         this.duration = duration;
         this.preview = preview;
         this.artist = artist;
         this.album = album;
-        this.type = type;
     }
 
 
