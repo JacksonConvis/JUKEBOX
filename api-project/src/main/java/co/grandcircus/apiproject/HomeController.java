@@ -1,5 +1,6 @@
 package co.grandcircus.apiproject;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,8 +53,15 @@ public class HomeController {
 
 	// favorites controller not complete
 	@RequestMapping("/favorites")
-	public String showFavorites(Model model) {
-		return "favorites";
+	public String listFaves(Model model) {
+		List<SearchResult> listF = repo.findAll();
+		model.addAttribute("favorites", listF);
+		return "displayfavorites";
 	}
-
+	@PostMapping("/remove")
+	public String removeFavorite(@RequestParam String id, Model model){
+		repo.deleteById(id);
+	return "redirect:/favorites";
+	}
+	
 }
