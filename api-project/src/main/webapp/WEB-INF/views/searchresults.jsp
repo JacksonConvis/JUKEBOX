@@ -32,7 +32,14 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
             <input type="hidden"  name="preview" value="${song.preview}">
             <source src="${song.preview}" />
           </audio>
+          
+           <c:if test="${song.liked}">
+          <input type="text" value="You like it!" readonly name="liked"><br><br>
+          </c:if>
+          <c:if test="${not song.liked}">
           <input type="submit" value="Add to Favorites"><br><br>
+          </c:if>
+         
           </td>
           </tr>
         </form>

@@ -13,8 +13,17 @@ public class SearchResult {
     private String preview;
     private Artist artist;
     private Album album;
+    private boolean liked;
 
-    public String getId() {
+    public boolean isLiked() {
+		return liked;
+	}
+
+	public void setLiked(boolean liked) {
+		this.liked = liked;
+	}
+
+	public String getId() {
         return id;
     }
 
@@ -64,13 +73,14 @@ public class SearchResult {
 
     public SearchResult() {}
     public SearchResult(String id, String title, int duration, String preview, Artist artist,
-            Album album) {
+            Album album, boolean liked) {
         this.id = id;
         this.title = title;
         this.duration = duration;
         this.preview = preview;
         this.artist = artist;
         this.album = album;
+        this.liked = liked;
     }
 
 

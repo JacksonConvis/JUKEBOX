@@ -37,15 +37,24 @@ public class HomeController {
 	public String addFavortie(@RequestParam String id, @RequestParam String title,
 			@RequestParam int duration, @RequestParam String preview,
 			@RequestParam String albumTitle, @RequestParam String cover, @RequestParam String name,
+			@RequestParam(required=false, defaultValue="false") String liked,
 			Model model) {
+		
+		
+		boolean fav = false;
+		if(liked.equals("true")) {
+			fav = true;
+		}
+		
 		Album addAlbum = new Album(albumTitle, cover);
 		Artist addArtist = new Artist(name);
 		SearchResult addSearchResult =
-				new SearchResult(id, title, duration, preview, addArtist, addAlbum);
+				new SearchResult(id, title, duration, preview, addArtist, addAlbum, fav);
 		repo.save(addSearchResult);
 		model.addAttribute("song", addSearchResult);
-		return "success";
+		return "redirect:/favorites";
 	}
+	
 
 	@RequestMapping("/success")
 	public String showSuccess(Model model) {
