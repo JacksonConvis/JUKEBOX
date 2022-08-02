@@ -30,8 +30,6 @@ public class HomeController {
 		return "searchresults";
 	}
 
-
-
 	@PostMapping("/favorite")
 	public String addFavortie(@RequestParam String id, @RequestParam String title,
 			@RequestParam int duration, @RequestParam String preview,
