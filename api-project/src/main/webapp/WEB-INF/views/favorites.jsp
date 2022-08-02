@@ -15,18 +15,25 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <button onclick="location.href='/'" type="button">Back to Search</button>
     <table>
       <tbody>
+      <c:forEach var="fav" items="${favorites}">
+      <form action="/remove" method="post">
         <tr>
-          <td><img src="${song.album.cover}" /></td>
+        <input type="hidden"  name="id" value="${fav.id}">
+          <td><img src="${fav.album.cover}" /></td>
           <td>
-            <c:out value="${song.artist.name}" /> <br />
-            <c:out value="${song.title}" /><br />
-            <c:out value="${song.duration}" /> sec<br />
-            <c:out value="${song.album.title}" /><br />
+            <c:out value="${fav.artist.name}" /> <br />
+            <c:out value="${fav.title}" /><br />
+            <c:out value="${fav.duration}" /><br />
+            <c:out value="${fav.album.title}" /><br />
             <audio controls>
-              <source src="${song.preview}" />
+              <source src="${fav.preview}" />
             </audio>
+            <input type="submit" value="Remove from Favorites"><br><br>
           </td>
+          
         </tr>
+        </form>
+        </c:forEach>
       </tbody>
     </table>
   </body>
