@@ -28,7 +28,21 @@ public class HomeController {
 	@PostMapping("/searchresults")
 	public String showResults(@RequestParam String searchTerm, Model model) {
 		List<SearchResult> songResults = searchService.SearchQuery(searchTerm).getData();
+		List<SearchResult> likedSongs = repo.findAll();
+//		for(SearchResult result : songResults) {
+//			for(SearchResult liked : likedSongs) {
+//				if(result.getId() == liked.getId()) {
+//					result.setLiked(true);
+//				}
+//			}
+//		}
+//		for(SearchResult result : songResults) {
+//			System.out.println(result.isLiked());
+//		}
+		
+		
 		model.addAttribute("songs", songResults);
+		model.addAttribute("liked", likedSongs);
 		return "searchresults";
 	}
 
@@ -37,19 +51,16 @@ public class HomeController {
 	public String addFavortie(@RequestParam String id, @RequestParam String title,
 			@RequestParam int duration, @RequestParam String preview,
 			@RequestParam String albumTitle, @RequestParam String cover, @RequestParam String name,
-			@RequestParam(required=false, defaultValue="false") String liked,
+			@RequestParam(required=false, defaultValue="false") boolean liked,
 			Model model) {
 		
 		
-		boolean fav = false;
-		if(liked.equals("true")) {
-			fav = true;
-		}
+		liked = true;
 		
 		Album addAlbum = new Album(albumTitle, cover);
 		Artist addArtist = new Artist(name);
 		SearchResult addSearchResult =
-				new SearchResult(id, title, duration, preview, addArtist, addAlbum, fav);
+				new SearchResult(id, title, duration, preview, addArtist, addAlbum, liked);
 		repo.save(addSearchResult);
 		model.addAttribute("song", addSearchResult);
 		return "redirect:/favorites";
@@ -62,7 +73,7 @@ public class HomeController {
 	}
 
 	// favorites controller not complete
-	@RequestMapping("/showfavorites")
+	@RequestMapping("/favorites")
 	public String listFaves(Model model) {
 		List<SearchResult> listF = repo.findAll();
 		model.addAttribute("favorites", listF);
@@ -74,7 +85,7 @@ public class HomeController {
 		repo.deleteById(id);
 		List<SearchResult> listF = repo.findAll();
 		model.addAttribute("favorites", listF);
-		return "redirect:/showfavorites";
+		return "redirect:/favorites";
 	}
 
 }

@@ -9,7 +9,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
   </head>
   <body>
     <h1>Your Search Results</h1>
-    <button onclick="location.href='/showfavorites'" type="button">Show My Favorites</button>
+    <button onclick="location.href='/favorites'" type="button">Show My Favorites</button>
     <button onclick="location.href='/'" type="button">Back to Search</button>
     <table>
       <tbody>
@@ -25,21 +25,25 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <input type="hidden"  name="title" value="${song.title}">
           <c:out value = "${song.title}"/><br>
           <input type="hidden"  name="duration" value="${song.duration}">
-          <c:out value = "${song.duration}"/> sec<br>
+          <c:out value = "${song.duration}"/> <br>
           <input type="hidden"  name="albumTitle" value="${song.album.title}">
           <c:out value = "${song.album.title}"/><br>
+          </td>
+          <td>
           <audio controls>
             <input type="hidden"  name="preview" value="${song.preview}">
             <source src="${song.preview}" />
           </audio>
-          
-           <c:if test="${song.liked}">
-          <input type="text" value="You like it!" readonly name="liked"><br><br>
+          </td>
+          <td>
+          <input type="submit" value="Add to Favorites">
+          </td>
+          <td>
+            <c:forEach var="liked" items="${liked }" >
+           <c:if test="${song.id== liked.id}">
+          <h2>&#127775;</h2>
           </c:if>
-          <c:if test="${not song.liked}">
-          <input type="submit" value="Add to Favorites"><br><br>
-          </c:if>
-         
+          </c:forEach>
           </td>
           </tr>
         </form>
