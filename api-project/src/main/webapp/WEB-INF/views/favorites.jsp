@@ -23,7 +23,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 		</div>
     
     <table>
-      <tbody>S
+      <tbody>
       <c:forEach var="fav" items="${favorites}">
       <form action="/remove" method="post">
         <tr>
