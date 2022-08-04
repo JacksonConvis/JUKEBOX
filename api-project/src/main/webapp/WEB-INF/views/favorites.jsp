@@ -11,16 +11,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <h1>My Favorites</h1>
     <button onclick="location.href='/'" type="button">Back to Search</button>
     
-    <div class="row">
-			
-			<div class="col-md-6">
-				<form class="form" action="searchBy" method="post">
-					<label for="searchTerm">Search Term</label> 
-					<input type="text" name="searchTerm" placeholder="Search By Song" /> 
-						<input type="submit" class="button" />
-				</form>
-			</div>
-		</div>
+ 
     
     <table>
       <tbody>
