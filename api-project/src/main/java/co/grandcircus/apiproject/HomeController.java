@@ -81,5 +81,17 @@ public class HomeController {
 		model.addAttribute("favorites", listF);
 		return "redirect:/favorites";
 	}
+	
+	@RequestMapping("/searchBy")
+	public String searchList(Model model, @RequestParam String searchTerm) {
+
+		List<SearchResult> listF = new ArrayList<>();
+			listF = repo.findByTitleContaining(searchTerm);
+		
+		
+		
+		model.addAttribute("favorites", listF); 
+		return "favorites";
+	}
 
 }
