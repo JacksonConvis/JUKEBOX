@@ -12,6 +12,11 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <button onclick="location.href='/favorites'" type="button">Show My Favorites</button>
     <button onclick="location.href='/'" type="button">Back to Search</button>
     <table>
+      <th></th>
+      <th>Details</th>
+      <th>Preview</th>
+      <th></th>
+      <th>Liked</th>
       <tbody>
         <c:forEach var="song" items="${songs}">
           <form action="/addfavorite" method="post">
@@ -19,7 +24,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <input type="hidden"  name="id" value="${song.id}">
           <input type="hidden"  name="cover" value="${song.album.cover}">
           <td><img src="${song.album.cover}"></td>
-          <td> 
+          <td style="text-align: center; vertical-align: middle;"> 
           <input type="hidden"  name="name" value="${song.artist.name}">
           <c:out value = "${song.artist.name}"/> <br>
           <input type="hidden"  name="title" value="${song.title}">
@@ -38,7 +43,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <td>
           <input type="submit" value="Add to Favorites">
           </td>
-          <td>
+          <td style="text-align: center; vertical-align: middle;">
             <c:forEach var="liked" items="${liked }" >
            <c:if test="${song.id== liked.id}">
           <h2>&#127775;</h2>

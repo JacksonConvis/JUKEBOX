@@ -1,6 +1,7 @@
 package co.grandcircus.apiproject;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,23 +30,16 @@ public class HomeController {
 	public String showResults(@RequestParam String searchTerm, Model model) {
 		List<SearchResult> songResults = searchService.SearchQuery(searchTerm).getData();
 		List<SearchResult> likedSongs = repo.findAll();
-//		for(SearchResult result : songResults) {
-//			for(SearchResult liked : likedSongs) {
-//				if(result.getId() == liked.getId()) {
-//					result.setLiked(true);
-//				}
-//			}
-//		}
-//		for(SearchResult result : songResults) {
-//			System.out.println(result.isLiked());
-//		}
+		
+	
+	
 		
 		
 		model.addAttribute("songs", songResults);
 		model.addAttribute("liked", likedSongs);
 		return "searchresults";
 	}
-
+	
 
 	@PostMapping("/addfavorite")
 	public String addFavortie(@RequestParam String id, @RequestParam String title,
