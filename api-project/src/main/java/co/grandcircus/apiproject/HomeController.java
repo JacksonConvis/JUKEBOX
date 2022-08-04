@@ -86,7 +86,7 @@ public class HomeController {
 	public String searchList(Model model, @RequestParam String searchTerm) {
 
 		List<SearchResult> listF = new ArrayList<>();
-			listF = repo.findByTitleContaining(searchTerm);
+			listF = repo.findByTitleContainingIgnoreCase(searchTerm);
 		
 		
 		
