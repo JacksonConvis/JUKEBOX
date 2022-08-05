@@ -21,10 +21,10 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
         <input type="hidden"  name="id" value="${fav.id}">
           <td><img src="${fav.album.cover}" /></td>
           <td>
-            <c:out value="${fav.artist.name}" /> <br />
-            <c:out value="${fav.title}" /><br />
-            <c:out value="${fav.duration}" /><br />
-            <c:out value="${fav.album.title}" /><br />
+            Artist Name: <c:out value="${fav.artist.name}" /> <br />
+           Song Title:  <c:out value="${fav.title}" /><br />
+            Song Duration: <c:out value="${fav.duration}" /><br />
+            Album Title: <c:out value="${fav.album.title}" /><br />
             <audio controls>
               <source src="${fav.preview}" />
             </audio>
