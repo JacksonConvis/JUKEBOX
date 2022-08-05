@@ -6,6 +6,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
   <head>
     <meta charset="ISO-8859-1" />
     <title>Results</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <h1>Your Search Results</h1>
@@ -13,10 +14,10 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <button onclick="location.href='/'" type="button">Back to Search</button>
     <table>
       <th></th>
-      <th>Details</th>
-      <th>Preview</th>
-      <th></th>
-      <th>Liked</th>
+      <th style="text-align: center; vertical-align: middle;">Details</th>
+      <th style="text-align: center; vertical-align: middle;">Preview</th>
+      <th style="text-align: center; vertical-align: middle;"></th>
+      <th style="text-align: center; vertical-align: middle;">Liked</th>
       <tbody>
         <c:forEach var="song" items="${songs}">
           <form action="/addfavorite" method="post">
