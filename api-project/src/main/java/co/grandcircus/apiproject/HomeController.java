@@ -83,12 +83,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/searchBy")
-	public String searchList(Model model, @RequestParam String searchTerm) {
+	public String searchList(Model model, 
+			@RequestParam (required=false) String searchTerm, 
+			@RequestParam (required=false) Artist artist,
+			@RequestParam (required=false) Album album,
+			@RequestParam String searchCategory
+			) {
 
 		List<SearchResult> listF = new ArrayList<>();
-			listF = repo.findByTitleContainingIgnoreCase(searchTerm);
-		
-		
 		
 		model.addAttribute("favorites", listF); 
 		return "favorites";
